@@ -12,7 +12,8 @@ def create_app():
     # secret key that will be used for securely signing the session 
     # cookie and can be used for any other security related needs by 
     # extensions or your application
-    app.config['SECRET_KEY'] = 'someCrazyS3cR3T!Key.!'
+    # app.config['SECRET_KEY'] = 'someCrazyS3cR3T!Key.!'
+    app.config['SECRET_KEY'] = 'abc123'
 
     # these are for the DB object to be able to connect to MySQL. 
     app.config['MYSQL_DATABASE_USER'] = 'webapp'
@@ -27,11 +28,11 @@ def create_app():
     # Import the various routes
     from src.views import views
     from src.customers.customers import customers
-    from src.products.products  import products
+    # from src.products.products  import products
 
     # Register the routes that we just imported so they can be properly handled
     app.register_blueprint(views,       url_prefix='/classic')
     app.register_blueprint(customers,   url_prefix='/classic')
-    app.register_blueprint(products,    url_prefix='/classic')
+    # app.register_blueprint(products,    url_prefix='/classic')
 
     return app
