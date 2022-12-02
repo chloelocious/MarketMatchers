@@ -4,10 +4,10 @@ SHOW DATABASES;
 
 USE MarketMatchers;
 
-CREATE USER 'WebUser'@'%'
-    IDENTIFIED BY 'abc123';
+-- CREATE USER 'webapp'@'%'
+--     IDENTIFIED BY 'abc123';
 
-GRANT ALL PRIVILEGES ON MarketMatchers.* TO 'WebUser'@'%';
+GRANT ALL PRIVILEGES ON MarketMatchers.* TO 'webapp'@'%';
 
 USE MarketMatchers;
 
@@ -70,98 +70,98 @@ CREATE TABLE Invoice (
 
 # sample data for Invoice
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('19384', 63.20, '2/21/2022', '6977901632', '3557046000566772');
+    VALUES ('19384', 63.20, '2022-02-21', '6977901632', '3557046000566772');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('40998', 38.12, '11/28/2021', '6309411993', '4911070363769475');
+    VALUES ('40998', 38.12, '2021-11-28', '6309411993', '4911070363769475');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('80289', 100.34, '1/30/2022', '3279509295', '5018791800579016');
+    VALUES ('80289', 100.34, '2022-01-30', '3279509295', '5018791800579016');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('02569', 476.12, '11/14/2022', '0250396090', '5007668163326834');
+    VALUES ('02569', 476.12, '2022-11-14', '0250396090', '5007668163326834');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('26660', 425.35, '2/2/2022', '6576352354', '3559597453182366');
+    VALUES ('26660', 425.35, '2022-02-02', '6576352354', '3559597453182366');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('55418', 34.49, '5/12/2022', '2563418413', '201701902643527');
+    VALUES ('55418', 34.49, '2022-05-12', '2563418413', '201701902643527');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('05901', 185.10, '12/6/2021', '6034343208', '5428041911150107');
+    VALUES ('05901', 185.10, '2021-12-06', '6034343208', '5428041911150107');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('41899', 470.38, '9/26/2022', '1330777648', '3587707707213968');
+    VALUES ('41899', 470.38, '2022-09-26', '1330777648', '3587707707213968');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('48448', 64.13, '8/17/2022', '0393691273', '6709943399380163');
+    VALUES ('48448', 64.13, '2022-08-17', '0393691273', '6709943399380163');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('39177', 134.23, '10/20/2022', '9874135519', '3587219637554628');
+    VALUES ('39177', 134.23, '2022-10-20', '9874135519', '3587219637554628');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('41409', 437.34, '3/8/2022', '2889619108', '30566993265259');
+    VALUES ('41409', 437.34, '2022-03-08', '2889619108', '30566993265259');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('95687', 210.10, '5/5/2022', '0499314519', '3555594501437102');
+    VALUES ('95687', 210.10, '2022-05-05', '0499314519', '3555594501437102');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('11631', 296.23, '5/27/2022', '1196264105', '3565859008813776');
+    VALUES ('11631', 296.23, '2022-05-27', '1196264105', '3565859008813776');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('06496', 208.45, '12/9/2021', '6343645874', '30214056994099');
+    VALUES ('06496', 208.45, '2021-12-09', '6343645874', '30214056994099');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('78645', 218.12, '6/5/2022', '1705048491', '3586176953375965');
+    VALUES ('78645', 218.12, '2022-06-05', '1705048491', '3586176953375965');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('26660', 262.46, '2/25/2022', '8308063054', '3589589871805516');
+    VALUES ('26660', 262.46, '2022-02-25', '8308063054', '3589589871805516');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('40998', 61.12, '8/2/2022', '2762127213', '3569537782081804');
+    VALUES ('40998', 61.12, '2022-08-02', '2762127213', '3569537782081804');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('80289', 152.45, '6/6/2022', '0305450753', '4405252909195919');
+    VALUES ('80289', 152.45, '2022-06-06', '0305450753', '4405252909195919');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('39177', 46.23, '6/15/2022', '3270771308', '5100147245617235');
+    VALUES ('39177', 46.23, '2022-06-15', '3270771308', '5100147245617235');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
-    VALUES ('11631', 93.54, '8/7/2022', '2328253714', '3565171888523263');
+    VALUES ('11631', 93.54, '2022-08-07', '2328253714', '3565171888523263');
 
 # table for InvoiceLine
 CREATE TABLE InvoiceLine (
 	InvoiceLineID CHAR(10) PRIMARY KEY NOT NULL,
 	quantity INT,
 	unitPrice DECIMAL(5,2),
-	InvoiceID CHAR(10) NOT NULL,
+	invoiceID CHAR(10) NOT NULL,
 	productID CHAR(10) NOT NULL,
-	CONSTRAINT il_InvoiceID
-                         FOREIGN KEY (InvoiceID)
-                         REFERENCES Invoice (InvoiceID)
+	CONSTRAINT il_invoiceID
+                         FOREIGN KEY (invoiceID)
+                         REFERENCES Invoice (invoiceID)
 );
 
 # sample data for InvoiceLine
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('9864914403', 74, 20.83, '19384', 46);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('5859930621', 68, 70.41, '40998', 34);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('0505725898', 51, 12.98, '80289', 87);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('2566389894', 57, 67.23, '02569', 6);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('7489392298', 17, 36.25, '26660', 69);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('5122783419', 22, 81.03, '55418', 83);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('6666090840', 33, 8.5, '05901', 84);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('7425878695', 17, 96.07, '41899', 56);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('5393762999', 68, 42.6, '48448', 16);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('8585948346', 44, 52.66, '39177', 36);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('5626170304', 57, 76.22, '41409', 65);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('8329967800', 60, 13.34, '95687', 7);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('7965538924', 86, 1.32, '11631', 34);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('8446752911', 87, 7.77, '06496', 8);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('6749743962', 99, 49.46, '78645', 79);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('1234367571', 91, 44.78, '26660', 72);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('6658830436', 89, 31.17, '40998', 40);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('3797799246', 45, 87.66, '80289', 3);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('3783309317', 81, 2.19, '39177', 87);
-INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, InvoiceID, productID)
+INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('9333139923', 56, 2.62, '11631', 100);
 
 # table for Category
@@ -185,14 +185,14 @@ INSERT INTO Category (categoryName, categoryID)
 # table for Harvest
 CREATE TABLE Harvest
 (
-	InvoiceID CHAR(10),
+	invoiceID CHAR(10),
 	InvoiceLineID CHAR(10),
 	quantity INT NOT NULL,
 	crop_ID CHAR(5) NOT NULL,
 	cropName VARCHAR(20),
-	CONSTRAINT harvest_InvoiceID
-        FOREIGN KEY (InvoiceID)
-        REFERENCES InvoiceLine (InvoiceID),
+	CONSTRAINT harvest_invoiceID
+        FOREIGN KEY (invoiceID)
+        REFERENCES InvoiceLine (invoiceID),
     CONSTRAINT harvest_InvoiceLineID
         FOREIGN KEY (InvoiceLineID)
         REFERENCES InvoiceLine (InvoiceLineID),
@@ -205,17 +205,17 @@ CREATE TABLE Harvest
 );
 
 # sample data for Harvest
-INSERT INTO Harvest (InvoiceID, InvoiceLineID, quantity, crop_ID, cropName)
+INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('19384', '9864914403', 10, '34787', 'Medium-sized radish');
-INSERT INTO Harvest (InvoiceID, InvoiceLineID, quantity, crop_ID, cropName)
+INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('40998', '5859930621', 10, '26051', 'Iceberg lettuce');
-INSERT INTO Harvest (InvoiceID, InvoiceLineID, quantity, crop_ID, cropName)
+INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('80289', '0505725898', 10, '64021', 'Cabbage head');
-INSERT INTO Harvest (InvoiceID, InvoiceLineID, quantity, crop_ID, cropName)
+INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('02569', '2566389894', 10, '29770', 'Medium-sized carrot');
-INSERT INTO Harvest (InvoiceID, InvoiceLineID, quantity, crop_ID, cropName)
+INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('40998', '5859930621', 4, '87437', 'Corn');
-INSERT INTO Harvest (InvoiceID, InvoiceLineID, quantity, crop_ID, cropName)
+INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('02569', '2566389894', 5, '59086', 'Fuji Apple');
 
 # table for Field
@@ -397,23 +397,23 @@ CREATE TABLE Enclosure (
 
 # sample data for Enclosure
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('26161', 'Pig pen', '5000 square feet', '06/21/2022');
+    VALUES ('26161', 'Pig pen', '5000 square feet', '2022-06-21');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('98704', 'Barn', '10000 square feet', '09/29/2009');
+    VALUES ('98704', 'Barn', '10000 square feet', '2009-09-29');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('81406', 'Chicken coop', '10000 square feet', '09/15/2021');
+    VALUES ('81406', 'Chicken coop', '10000 square feet', '2021-09-15');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('92582', 'Grooming area', '40000 square feet', '11/30/2004');
+    VALUES ('92582', 'Grooming area', '40000 square feet', '2004-11-30');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('22940', 'Brooder house', '10000 square feet', '05/16/2010');
+    VALUES ('22940', 'Brooder house', '10000 square feet', '2010-05-16');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('56713', 'Grazing area', '40000 square feet', '05/17/2010');
+    VALUES ('56713', 'Grazing area', '40000 square feet', '2010-05-17');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('19210', 'Silo', '5000 square feet', '02/18/2001');
+    VALUES ('19210', 'Silo', '5000 square feet', '2001-02-18');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('10283', 'Equipment storage', '5000 square feet', '06/12/2020');
+    VALUES ('10283', 'Equipment storage', '5000 square feet', '2020-06-12');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('29482', 'Hay and feed storage', '5000 square feet', '12/30/2014');
+    VALUES ('29482', 'Hay and feed storage', '5000 square feet', '2014-12-30');
 
 # table for Livestock
 CREATE TABLE Livestock (
