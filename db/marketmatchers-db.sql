@@ -124,49 +124,49 @@ CREATE TABLE InvoiceLine (
 
 # sample data for InvoiceLine
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('9864914403', 74, 20.83, '19384', 46);
+    VALUES ('9864914403', 74, 20.83, '6977901632', 46);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('5859930621', 68, 70.41, '40998', 34);
+    VALUES ('5859930621', 68, 70.41, '6309411993', 34);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('0505725898', 51, 12.98, '80289', 87);
+    VALUES ('0505725898', 51, 12.98, '3279509295', 87);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('2566389894', 57, 67.23, '02569', 6);
+    VALUES ('2566389894', 57, 67.23, '0250396090', 6);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('7489392298', 17, 36.25, '26660', 69);
+    VALUES ('7489392298', 17, 36.25, '6576352354', 69);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('5122783419', 22, 81.03, '55418', 83);
+    VALUES ('5122783419', 22, 81.03, '2563418413', 83);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('6666090840', 33, 8.5, '05901', 84);
+    VALUES ('6666090840', 33, 8.5, '6034343208', 84);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('7425878695', 17, 96.07, '41899', 56);
+    VALUES ('7425878695', 17, 96.07, '1330777648', 56);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('5393762999', 68, 42.6, '48448', 16);
+    VALUES ('5393762999', 68, 42.6, '0393691273', 16);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('8585948346', 44, 52.66, '39177', 36);
+    VALUES ('8585948346', 44, 52.66, '9874135519', 36);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('5626170304', 57, 76.22, '41409', 65);
+    VALUES ('5626170304', 57, 76.22, '2889619108', 65);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('8329967800', 60, 13.34, '95687', 7);
+    VALUES ('8329967800', 60, 13.34, '0499314519', 7);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('7965538924', 86, 1.32, '11631', 34);
+    VALUES ('7965538924', 86, 1.32, '1196264105', 34);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('8446752911', 87, 7.77, '06496', 8);
+    VALUES ('8446752911', 87, 7.77, '6343645874', 8);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('6749743962', 99, 49.46, '78645', 79);
+    VALUES ('6749743962', 99, 49.46, '1705048491', 79);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('1234367571', 91, 44.78, '26660', 72);
+    VALUES ('1234367571', 91, 44.78, '8308063054', 72);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('6658830436', 89, 31.17, '40998', 40);
+    VALUES ('6658830436', 89, 31.17, '2762127213', 40);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('3797799246', 45, 87.66, '80289', 3);
+    VALUES ('3797799246', 45, 87.66, '0305450753', 3);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('3783309317', 81, 2.19, '39177', 87);
+    VALUES ('3783309317', 81, 2.19, '3270771308', 87);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
-    VALUES ('9333139923', 56, 2.62, '11631', 100);
+    VALUES ('9333139923', 56, 2.62, '2328253714', 100);
 
 # table for Category
 CREATE TABLE Category (
-	categoryName VARCHAR(50) PRIMARY KEY NOT NULL,
+	categoryName VARCHAR(50) NOT NULL,
 	categoryID char(5) PRIMARY KEY NOT NULL
 );
 
@@ -181,6 +181,32 @@ INSERT INTO Category (categoryName, categoryID)
     VALUES ('Clothing', '99684');
 INSERT INTO Category (categoryName, categoryID)
     VALUES ('Family', '44717');
+
+
+# table for Field
+CREATE TABLE Field (
+	crop_ID CHAR(5) PRIMARY KEY NOT NULL,
+	cropName VARCHAR(20),
+	plotNumber INT NOT NULL,
+	numCropsPlanted INT NOT NULL,
+	datePlanted DATE,
+	size INT,
+    INDEX idx_cropName (cropName)
+);
+
+# sample data for Field
+INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
+    VALUES ('87437', 'Corn', 4, 500, '2022-11-22', 10000);
+INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
+    VALUES ('29770', 'Medium-sized carrot', 1, 500, '2022-05-22', 8000);
+INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
+    VALUES ('26051', 'Iceberg lettuce', 2, 500, '2022-04-30', 7500);
+INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
+    VALUES ('34787', 'Medium-sized radish', 11, 500, '2022-05-01', 1200);
+INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
+    VALUES ('59086', 'Fuji Apple', 9, 500, '2022-10-23', 500);
+INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
+    VALUES ('64021', 'Cabbage head', 7, 500, '2022-11-22', 6000);
 
 # table for Harvest
 CREATE TABLE Harvest
@@ -206,51 +232,67 @@ CREATE TABLE Harvest
 
 # sample data for Harvest
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
-    VALUES ('19384', '9864914403', 10, '34787', 'Medium-sized radish');
+    VALUES ('6977901632', '9864914403', 10, '34787', 'Medium-sized radish');
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
-    VALUES ('40998', '5859930621', 10, '26051', 'Iceberg lettuce');
+    VALUES ('6309411993', '5859930621', 10, '26051', 'Iceberg lettuce');
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
-    VALUES ('80289', '0505725898', 10, '64021', 'Cabbage head');
+    VALUES ('3279509295', '0505725898', 10, '64021', 'Cabbage head');
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
-    VALUES ('02569', '2566389894', 10, '29770', 'Medium-sized carrot');
+    VALUES ('1330777648', '2566389894', 10, '29770', 'Medium-sized carrot');
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
-    VALUES ('40998', '5859930621', 4, '87437', 'Corn');
+    VALUES ('2762127213', '5859930621', 4, '87437', 'Corn');
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
-    VALUES ('02569', '2566389894', 5, '59086', 'Fuji Apple');
+    VALUES ('3270771308', '2566389894', 5, '59086', 'Fuji Apple');
 
-# table for Field
-CREATE TABLE Field (
-	crop_ID CHAR(5) PRIMARY KEY NOT NULL,
-	cropName VARCHAR(20),
-	plotNumber INT NOT NULL,
-	numCropsPlanted INT NOT NULL,
-	datePlanted DATE,
-	size INT
+# table for ProductMaker
+CREATE TABLE ProductMaker (
+    PM_ID char(10) PRIMARY KEY,
+    firstName varchar(40),
+    lastName varchar(40),
+    phoneNumber char(12),
+    emailAddress varchar(50),
+    streetAddress varchar(50),
+    city varchar(50),
+    state varchar(30),
+    zip char(20)
 );
 
-# sample data for Field
-INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
-    VALUES ('87437', 'Corn', 4, 500, '11.22.2022', 10000);
-INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
-    VALUES ('29770', 'Medium-sized carrot', 1, 500, '5.22.2022', 8000);
-INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
-    VALUES ('26051', 'Iceberg lettuce', 2, 500, '4.30.2022', 7500);
-INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
-    VALUES ('34787', 'Medium-sized radish', 11, 500, '5.1.2022', 1200);
-INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
-    VALUES ('59086', 'Fuji Apple', 9, 500, '10.23.2022', 500);
-INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
-    VALUES ('64021', 'Cabbage head', 7, 500, '11.22.2022', 6000);
+# sample data for ProductMaker
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('4878910526', 'Morena', 'Jewson', '554-520-4055', 'mjewson0@indiatimes.com', '9 Crest Line Parkway', 'Świnice Warckie', null, '99-140');
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('1534837132', 'Shepperd', 'Luce', '115-562-3098', 'sluce1@mit.edu', '32664 Becker Pass', 'Llama', null, null);
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('9485196504', 'Milo', 'Champerlen', '335-601-6483', 'mchamperlen2@imageshack.us', '27 Drewry Center', 'Soubré', null, null);
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('6404487640', 'Zarla', 'Sandells', '304-334-1920', 'zsandells3@4shared.com', '57928 Dexter Street', 'Caen', 'Basse-Normandie', '14040 CEDEX 4');
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('9073500877', 'Brennen', 'Hauxley', '832-824-8341', 'bhauxley4@posterous.com', '9858 Meadow Valley Avenue', 'Rejasa Kaja', null, null);
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('5103651483', 'Emmalynne', 'Martello', '403-944-3869', 'emartello5@shutterfly.com', '71 Judy Junction', 'Santa Elena de Uairén', null, null);
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('9297937268', 'Roderic', 'Debney', '679-541-7861', 'rdebney6@cbsnews.com', '71 Springs Plaza', 'Shangbahe', null, null);
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('6441851784', 'Skippie', 'Allitt', '694-345-9484', 'sallitt7@youtube.com', '51 Dennis Hill', 'Yuecheng', null, null);
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('1963218361', 'Claudianus', 'Ashingden', '554-343-5755', 'cashingden8@geocities.com', '096 Bonner Hill', 'Sandayong Sur', null, '6344');
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('5705049994', 'Judon', 'Seegar', '194-823-5778', 'jseegar9@opensource.org', '01011 Northwestern Pass', 'Barubandung', null, null);
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('0049629891', 'Pryce', 'Cullington', '305-603-9244', 'pcullingtona@uiuc.edu', '0 Aberg Plaza', 'Sobral', 'Lisboa', '2530-285');
+INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
+    VALUES ('7401243873', 'Blondell', 'Mazdon', '975-169-4217', 'bmazdonb@time.com', '0 Nelson Crossing', 'Angoram', null, null);
 
 # table for Plants
 CREATE TABLE Plants (
   plantName varchar(40) PRIMARY KEY NOT NULL,
-  plantSpecies varchar(40) PRIMARY KEY NOT NULL,
+  plantSpecies varchar(40) NOT NULL,
   cropName varchar(20) NOT NULL,
   crop_ID char(5) NOT NULL,
-  cost double(40, 2),
-  sellingPrice double(40, 2),
+  cost double(40, 3),
+  sellingPrice double(40, 3),
   PM_ID char(10) NOT NULL,
+  INDEX idx_plantSpecies (plantSpecies),
   CONSTRAINT plants_cropName
                     FOREIGN KEY (cropName)
                     REFERENCES Field (cropName),
@@ -264,37 +306,17 @@ CREATE TABLE Plants (
 
 # sample data for Plants
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Maize', 'Zea mays', 'Corn', '87437', '$1.49', '$5.73', '7912417389');
+    VALUES ('Maize', 'Zea mays', 'Corn', '87437', '1.49', '5.73', '4878910526');
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Lettuce', 'Lactuca sativa', 'Iceberg lettuce', '26051', '$1.39', '$4.08', '6449093374');
+    VALUES ('Lettuce', 'Lactuca sativa', 'Iceberg lettuce', '26051', '1.39', '4.08', '1534837132');
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Carrot', 'Daucus carota', 'Medium-sized carrot', '29770', '$1.72', '$3.70', '7912417389');
+    VALUES ('Carrot', 'Daucus carota', 'Medium-sized carrot', '29770', '1.72', '3.70', '9485196504');
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Radish', 'Raphanus sativus', 'Medium-sized radish', '34787', '$0.85', '$3.53', '6449093374');
+    VALUES ('Radish', 'Raphanus sativus', 'Medium-sized radish', '34787', '0.85', '3.53', '6404487640');
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Onion', 'Allium cepa', 'Garden onion', 'n/a', '$0.10', '$5.74', '5743077487');
+    VALUES ('Cabbage', 'Brassica oleracea var. capitata', 'Cabbage head', '64021', '1.24', '4.50', '5103651483');
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Cabbage', 'Brassica oleracea var. capitata', 'Cabbage head', '64021', '$1.24', '$4.50', '7281331592');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Mint', 'Mentha piperita L.', 'Mint herb', 'n/a', '$1.69', '$4.11', '5743077487');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Bell pepper', 'Capsicum annuum', 'Assorted bell peppers', 'n/a', '$0.38', '$5.05', '7281331592');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Potato', 'Solanum tuberosum', 'Yukon potato', 'n/a', '$0.31', '$4.74', '6588910770');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Aubergine', 'Solanum melongena', 'Eggplant', 'n/a', '$0.63', '$3.70', '2538792215');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Common bean', 'Phaseolus vulgaris', 'Green Beans', 'n/a', '$0.85', '$5.50', '6588910770');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Tomato', 'Solanum lycopersicum', 'Tomato', 'n/a', '$0.41', '$5.10', '7724710988');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Asparagus', 'Asparagus officinalis', 'Asparagus', 'n/a', '$2.00', '$5.73', '7281331592');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Okra', 'Abelmoschus esculentus', 'Okra', 'n/a', '$0.46', '$5.94', '2538792215');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Apple', 'Malus domestica', 'Fuji Apple', '59086', '$0.57', '$3.99', '2538792215');
-INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
-    VALUES ('Common plum', 'Prunus domestica', 'Plum', 'n/a', '$0.28', '$3.76', '7724710988');
+    VALUES ('Apple', 'Malus domestica', 'Fuji Apple', '59086', '0.57', '3.99', '6404487640');
 
 # table for Product
 CREATE TABLE Product (
@@ -314,15 +336,76 @@ CREATE TABLE Product (
 
 # sample data for Product
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
-    VALUES ('8247971116', 20, 'Wool socks', 'Socks', 8.00, 3.19, '99684', '4878910526');
+    VALUES ('8247971116', 20, 'Wool socks', 'Socks', 8.00, 3.19, '99684', '1534837132');
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
-    VALUES ('4239220552', 20, 'Wool mittens', 'Mittens', 25.12, 21.44, '99684', '2538792215');
+    VALUES ('4239220552', 20, 'Wool mittens', 'Mittens', 25.12, 21.44, '99684', '7401243873');
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
-    VALUES ('8083768537', 40, 'Goat milk hand cream', 'Hand cream', 15.21, 9.12, '36155', '5743077487');
+    VALUES ('8083768537', 40, 'Goat milk hand cream', 'Hand cream', 15.21, 9.12, '36155', '6404487640');
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
-    VALUES ('2941651343', 60, 'Goat milk skin care moisturizer', 'Moisturizer', 3.99, 1.85, '36155', '6449093374');
+    VALUES ('2941651343', 60, 'Goat milk skin care moisturizer', 'Moisturizer', 3.99, 1.85, '36155', '9485196504');
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
-    VALUES ('0343846290', 15, 'Wool scarf', 'Scarf', 30.00, 24.12, '99684', '2531403914');
+    VALUES ('0343846290', 15, 'Wool scarf', 'Scarf', 30.00, 24.12, '99684', '5103651483');
+
+# table for Enclosure
+CREATE TABLE Enclosure (
+    enclosureID char(5) PRIMARY KEY NOT NULL,
+    type varchar(40),
+    size varchar(40),
+    dateBuilt date
+);
+
+# sample data for Enclosure
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('26161', 'Pig pen', '5000 square feet', '2022-06-21');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('98704', 'Barn', '10000 square feet', '2009-09-29');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('81406', 'Chicken coop', '10000 square feet', '2021-09-15');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('92582', 'Grooming area', '40000 square feet', '2004-11-30');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('22940', 'Brooder house', '10000 square feet', '2010-05-16');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('56713', 'Grazing area', '40000 square feet', '2010-05-17');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('19210', 'Silo', '5000 square feet', '2001-02-18');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('10283', 'Equipment storage', '5000 square feet', '2020-06-12');
+INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
+    VALUES ('29482', 'Hay and feed storage', '5000 square feet', '2014-12-30');
+
+# table for AnimalType
+CREATE TABLE AnimalType (
+  animalName varchar(40) NOT NULL,
+  a_TypeID char(10) PRIMARY KEY NOT NULL,
+  enclosureID char(5) NOT NULL,
+  INDEX idx_animalName (animalName),
+  CONSTRAINT at_enclosureID
+                        FOREIGN KEY (enclosureID)
+                        REFERENCES Enclosure (enclosureID)
+);
+
+# sample data for AnimalType
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Hampshire pig', '8455515188', '29482');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Berkshire pig', '8875969310', '26161');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Alpine goat', '2440075768', '98704');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Sussex chicken', '7873465000', '81406');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Brahma chicken', '8516904502', '22940');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Hereford cattle', '9738514525', '19210');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Simmental cattle', '3763867642', '56713');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Brown Swiss cattle', '3779573099', '10283');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Leghorn chicken', '6035450556', '81406');
+INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
+    VALUES ('Hampshire sheep', '3376192698', '29482');
 
 # table for AnimalProduct
 CREATE TABLE AnimalProduct (
@@ -354,76 +437,16 @@ INSERT INTO AnimalProduct (InvoiceLineID, productName, animalName, a_TypeID, qua
 INSERT INTO AnimalProduct (InvoiceLineID, productName, animalName, a_TypeID, quantity)
     VALUES ('9333139923', 'Pork', 'Hampshire pig', '8455515188', 9);
 
-
-# table for AnimalType
-CREATE TABLE AnimalType (
-  animalName varchar(40) PRIMARY KEY NOT NULL,
-  a_TypeID char(10) PRIMARY KEY NOT NULL,
-  enclosureID char(5) NOT NULL,
-  CONSTRAINT at_enclosureID
-                        FOREIGN KEY (enclosureID)
-                        REFERENCES Enclosure (enclosureID)
-);
-
-# sample data for AnimalType
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Hampshire pig', '8455515188', '31322');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Berkshire pig', '8875969310', '26161');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Alpine goat', '2440075768', '98704');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Sussex chicken', '7873465000', '81406');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Brahma chicken', '8516904502', '22940');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Hereford cattle', '9738514525', '92293');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Simmental cattle', '3763867642', '56713');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Brown Swiss cattle', '3779573099', '14214');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Leghorn chicken', '6035450556', '81297');
-INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
-    VALUES ('Hampshire sheep', '3376192698', '92582');
-
-# table for Enclosure
-CREATE TABLE Enclosure (
-    enclosureID int PRIMARY KEY NOT NULL,
-    type varchar(40),
-    size varchar(40),
-    dateBuilt date
-);
-
-# sample data for Enclosure
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('26161', 'Pig pen', '5000 square feet', '2022-06-21');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('98704', 'Barn', '10000 square feet', '2009-09-29');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('81406', 'Chicken coop', '10000 square feet', '2021-09-15');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('92582', 'Grooming area', '40000 square feet', '2004-11-30');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('22940', 'Brooder house', '10000 square feet', '2010-05-16');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('56713', 'Grazing area', '40000 square feet', '2010-05-17');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('19210', 'Silo', '5000 square feet', '2001-02-18');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('10283', 'Equipment storage', '5000 square feet', '2020-06-12');
-INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
-    VALUES ('29482', 'Hay and feed storage', '5000 square feet', '2014-12-30');
-
 # table for Livestock
 CREATE TABLE Livestock (
-  animalSpecies varchar(40) PRIMARY KEY NOT NULL,
+  animalSpecies varchar(40) NOT NULL,
   animalName varchar(40) NOT NULL,
   a_TypeID char(10) NOT NULL,
   amount int,
   cost decimal(5, 2),
   sellingPrice decimal(5, 2),
   PM_ID char(10) NOT NULL,
+  INDEX idx_animalSpecies (animalSpecies),
   CONSTRAINT ls_animalName
                        FOREIGN KEY (animalName)
                        REFERENCES AnimalType (animalName),
@@ -437,17 +460,17 @@ CREATE TABLE Livestock (
 
 # sample data for Livestock
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
-    VALUES ('Sus scrofa domesticus', 'Hampshire pig', '8455515188', 8, 285.62, 242.11, '5103651483');
+    VALUES ('Sus scrofa domesticus', 'Hampshire pig', '8455515188', 8, 285.62, 242.11, '1534837132');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
-    VALUES ('Sus scrofa domesticus', 'Berkshire pig', '8875969310', 23, 350.95, 224.20, '5103651483');
+    VALUES ('Sus scrofa domesticus', 'Berkshire pig', '8875969310', 23, 350.95, 224.20, '1534837132');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
-    VALUES ('Capra aegagrus hircus', 'Alpine goat', '2440075768', 6, 206.65, 363.73, '5710151254');
+    VALUES ('Capra aegagrus hircus', 'Alpine goat', '2440075768', 6, 206.65, 363.73, '7401243873');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
-    VALUES ('Gallus gallus domesticus', 'Sussex chicken', '7873465000', 9, 259.16, 241.93, '5710151254');
+    VALUES ('Gallus gallus domesticus', 'Sussex chicken', '7873465000', 9, 259.16, 241.93, '7401243873');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
-    VALUES ('Gallus gallus domesticus', 'Brahma chicken', '8516904502', 30, 183.77, 277.26, '1963218361');
+    VALUES ('Gallus gallus domesticus', 'Brahma chicken', '8516904502', 30, 183.77, 277.26, '9297937268');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
-    VALUES ('Bos taurus taurus', 'Hereford cattle', '9738514525', 25, 284.00, 282.98, '1963218361');
+    VALUES ('Bos taurus taurus', 'Hereford cattle', '9738514525', 25, 284.00, 282.98, '9297937268');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
     VALUES ('Bos taurus taurus', 'Simmental cattle', '3763867642', 2, 322.52, 422.65, '0049629891');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
@@ -473,7 +496,7 @@ INSERT INTO Website (URL) VALUES ('yelp.com');
 
 # table for Flyer
 CREATE TABLE Flyer (
-    locationPosted varchar(20) PRIMARY KEY
+    locationPosted varchar(40) PRIMARY KEY
 );
 
 # sample data for Flyer
@@ -493,71 +516,13 @@ INSERT INTO Flyer (locationPosted) VALUES ('3 Troy Drive');
 INSERT INTO Flyer (locationPosted) VALUES ('6 Chinook Avenue');
 INSERT INTO Flyer (locationPosted) VALUES ('6 Chive Circle');
 
-# table for HostingSource
-CREATE TABLE HostingSource (
-    eventName varchar(20) PRIMARY KEY,
-    URL varchar(40),
-    locationPosted varchar(20),
-    productType varchar(20),
-    sponsor varchar(20),
-    contactInformation varchar(20),
-    firstName varchar(40),
-    lastName varchar(40),
-    emailAddress varchar(40),
-    standName varchar(40),
-    standID char(10),
-    CONSTRAINT hs_URL
-        FOREIGN KEY (URL)
-        REFERENCES Website (URL),
-    CONSTRAINT hs_locationPosted
-        FOREIGN KEY (locationPosted)
-        REFERENCES Flyer (locationPosted),
-    CONSTRAINT hs_standName
-        FOREIGN KEY (standName)
-        REFERENCES  MarketStand (standName),
-    CONSTRAINT hs_standID
-        FOREIGN KEY (standID)
-        REFERENCES MarketStand (standID)
-);
-
-# sample data for hosting source
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Holiday Market', 'Produce, animal goods, home goods', 'Skarts' '315-617-0301', 'Sasha', 'Baudy', 'sbaudy0@de.vu', 'creativecommons.org', '56 Southridge Court', '1903 Mitchell Lane', 'Johns Inc', '3428781511');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Fresh and Fun Open Market', 'Produce, animal goods, home goods', 'Browsebug', '233-151-7644', 'Mikkel', 'Nutley', 'mnutley1@boston.com', 'wikispaces.com', '34168 Monica Crossing', 'Jacobi, Robel and Jast', '7172833058');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Join Us! Farmers Market', 'Produce, animal goods, home goods', 'DabZ', '797-306-4351', 'Mariellen', 'Braiden', 'mbraiden2@moonfruit.com', 'creativecommons.org', '055 Bluejay Pass', 'Renner, Haley and Satterfield', '0705063186');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Come celebrate! Autumn Market', 'Produce, animal goods, home goods', 'Creative collective', '729-867-9466', 'Kirbee', 'Klezmski', 'kklezmski3@blinklist.com', 'blogspot.com', '055 Bluejay Pass', 'Crist, Altenwerth and Ritchie', '8279540148');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Harvest Mart', 'Produce', 'Skaboo', '505-860-5032', 'Candida', 'Jelks', 'cjelks4@tripadvisor.com', 'wikispaces.com', '4 6th Parkway', 'Stanton-Swaniawski', '2537190505');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Fresh Foods for All', 'Produce, animal goods', 'Skynoodle', '957-499-7402', 'Dorie', 'Philliskirk', 'dphilliskirk5@yale.edu', 'google.com', '3 Daystar Circle', 'Kris, McGlynn and Conn', '7397371787');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Magic Meats and Beans', 'Produce, animal goods', 'Teklist', '408-769-4788', 'Valentin', 'Romeuf', 'blogspot.com', 'google.com', '67457 Independence Lane', 'Stanton and Sons', '4731002869');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Clothes, Cosmetics, and Food -- What More Could You Want!', 'Produce, home goods', 'Gigabox', '841-698-9306', 'Francis', 'Pittoli', 'fpittoli7@is.gd', 'a8.net', '67457 Independence Lane', 'Dach-Parisian', '3605029191');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Farmer Collective Market', 'Produce, animal goods', 'Dabvine', '771-285-6456', 'Rory', 'Meiklejohn', 'rmeiklejohn8@europa.eu', 'buzzfeed.com', '10476 Bartillon Drive', 'Wilderman Group', '3455350348');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Butcher and Grower Coalition', 'Produce, animal goods', 'Riffpedia', '350-679-3620', 'Annetta', 'Lamburne', 'alamburne9@symantec.com', 'buzzfeed.com', '31 Bluestem Way', 'Bashirian Group', '2159525189');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Home Grown Fest', 'Produce, animal goods, home goods', 'Twitterbridge', '547-355-3372', 'Bernadina', 'Tombs', 'btombsa@webs.com', 'yelp.com', '10476 Bartillon Drive', 'Prosacco and Sons', '4505416739');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Fruits Festival', 'Produce', 'Kwilith', '908-234-4848', 'Rod', 'Patshull', 'rpatshullb@sbwire.com', 'google.com', '6187 Tennessee Pass', 'Lueilwitz LLC', '8818807196');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Equinox Mart', 'Produce, animal goods, home goods', 'Flashpoint', '851-523-1532', 'Aube', 'Sedge', 'asedgec@networkadvertising.org', 'yelp.com', '6 Chive Circle', 'Skiles Inc', '4641896070');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Open Market Square', 'Produce, animal goods, home goods', 'Kare', '629-157-1162', 'Averil', 'Burd', 'aburdd@twitter.com', 'etsy.com', '3 Troy Drive', 'Torp, Weber and Tromp', '1384261338');
-INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
-    VALUES ('Small Business Swap', 'Produce, animal goods, home goods', 'Topdrive', '154-879-5250', 'Aurelie', 'Tabourier', 'atabouriere@instagram.com', 'blogspot.com', '6 Chinook Avenue', 'Olson Inc', '9443448750');
-
 # table for MarketStand
 CREATE TABLE MarketStand (
-    standName varchar(40) PRIMARY KEY,
+    standName varchar(40) NOT NULL,
     standID char(10) PRIMARY KEY,
     standDescription varchar(100),
-    location varchar(60)
+    location varchar(60),
+    INDEX idx_standName (standName)
 );
 
 INSERT INTO MarketStand (standName, standID, standDescription, location)
@@ -591,17 +556,76 @@ INSERT INTO MarketStand (standName, standID, standDescription, location)
 INSERT INTO MarketStand (standName, standID, standDescription, location)
     VALUES ('Olson Inc', '9443448750', 'Produce goods and products', '2079 Basil Way');
 
+# table for HostingSource
+CREATE TABLE HostingSource (
+    eventName varchar(60) PRIMARY KEY,
+    URL varchar(40),
+    locationPosted varchar(40),
+    productType varchar(60),
+    sponsor varchar(20),
+    contactInformation varchar(20),
+    firstName varchar(40),
+    lastName varchar(40),
+    emailAddress varchar(40),
+    standName varchar(40),
+    standID char(10),
+    CONSTRAINT hs_URL
+        FOREIGN KEY (URL)
+        REFERENCES Website (URL),
+    CONSTRAINT hs_locationPosted
+        FOREIGN KEY (locationPosted)
+        REFERENCES Flyer (locationPosted),
+    CONSTRAINT hs_standName
+        FOREIGN KEY (standName)
+        REFERENCES  MarketStand (standName),
+    CONSTRAINT hs_standID
+        FOREIGN KEY (standID)
+        REFERENCES MarketStand (standID)
+);
+
+# sample data for hosting source
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Holiday Market', 'Produce, animal goods, home goods', 'Skarts', '315-617-0301', 'Sasha', 'Baudy', 'sbaudy0@de.vu', 'creativecommons.org', '1903 Mitchell Lane', 'Johns Inc', '3428781511');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Fresh and Fun Open Market', 'Produce, animal goods, home goods', 'Browsebug', '233-151-7644', 'Mikkel', 'Nutley', 'mnutley1@boston.com', 'wikispaces.com', '34168 Monica Crossing', 'Jacobi, Robel and Jast', '7172833058');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Join Us! Farmers Market', 'Produce, animal goods, home goods', 'DabZ', '797-306-4351', 'Mariellen', 'Braiden', 'mbraiden2@moonfruit.com', 'creativecommons.org', '055 Bluejay Pass', 'Renner, Haley and Satterfield', '0705063186');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Come celebrate! Autumn Market', 'Produce, animal goods, home goods', 'Creative collective', '729-867-9466', 'Kirbee', 'Klezmski', 'kklezmski3@blinklist.com', 'blogspot.com', '055 Bluejay Pass', 'Crist, Altenwerth and Ritchie', '8279540148');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Harvest Mart', 'Produce', 'Skaboo', '505-860-5032', 'Candida', 'Jelks', 'cjelks4@tripadvisor.com', 'wikispaces.com', '4 6th Parkway', 'Stanton-Swaniawski', '2537190505');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Fresh Foods for All', 'Produce, animal goods', 'Skynoodle', '957-499-7402', 'Dorie', 'Philliskirk', 'dphilliskirk5@yale.edu', 'google.com', '3 Daystar Circle', 'Kris, McGlynn and Conn', '7397371787');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Magic Meats and Beans', 'Produce, animal goods', 'Teklist', '408-769-4788', 'Valentin', 'Romeuf', 'blogspot.com', 'google.com', '67457 Independence Lane', 'Stanton and Sons', '4731002869');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Clothes, Cosmetics, and Food -- What More Could You Want!', 'Produce, home goods', 'Gigabox', '841-698-9306', 'Francis', 'Pittoli', 'fpittoli7@is.gd', 'google.com', '67457 Independence Lane', 'Dach-Parisian', '3605029191');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Farmer Collective Market', 'Produce, animal goods', 'Dabvine', '771-285-6456', 'Rory', 'Meiklejohn', 'rmeiklejohn8@europa.eu', 'etsy.com', '10476 Bartillon Drive', 'Wilderman Group', '8676754209');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Butcher and Grower Coalition', 'Produce, animal goods', 'Riffpedia', '350-679-3620', 'Annetta', 'Lamburne', 'alamburne9@symantec.com', 'etsy.com', '31 Bluestem Way', 'Bashirian Group', '2159525189');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Home Grown Fest', 'Produce, animal goods, home goods', 'Twitterbridge', '547-355-3372', 'Bernadina', 'Tombs', 'btombsa@webs.com', 'yelp.com', '10476 Bartillon Drive', 'Prosacco and Sons', '4505416739');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Fruits Festival', 'Produce', 'Kwilith', '908-234-4848', 'Rod', 'Patshull', 'rpatshullb@sbwire.com', 'google.com', '6187 Tennessee Pass', 'Lueilwitz LLC', '8818807196');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Equinox Mart', 'Produce, animal goods, home goods', 'Flashpoint', '851-523-1532', 'Aube', 'Sedge', 'asedgec@networkadvertising.org', 'yelp.com', '6 Chive Circle', 'Skiles Inc', '4641896070');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Open Market Square', 'Produce, animal goods, home goods', 'Kare', '629-157-1162', 'Averil', 'Burd', 'aburdd@twitter.com', 'etsy.com', '3 Troy Drive', 'Torp, Weber and Tromp', '1384261338');
+INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
+    VALUES ('Small Business Swap', 'Produce, animal goods, home goods', 'Topdrive', '154-879-5250', 'Aurelie', 'Tabourier', 'atabouriere@instagram.com', 'blogspot.com', '6 Chinook Avenue', 'Olson Inc', '9443448750');
+
 # table for Employee
 CREATE TABLE Employee(
     IDNum char(10) PRIMARY KEY,
     firstName varchar(40),
     lastName varchar(40),
     bDate varchar(30),
-    phoneNumber char(10),
+    phoneNumber char(12),
     streetAddress varchar(50),
     city varchar(50),
     state varchar(30),
-    zip char(5),
+    zip char(20),
     mgrID char(10),
     standName varchar(40),
     standID char(10),
@@ -618,35 +642,35 @@ CREATE TABLE Employee(
 
 # sample data for Employee
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('2628759659', 'Yancy', 'Christoffe', '1/6/2022', '633-547-5965', '797 Amoth Circle', 'Ponta Grossa', null, '84000-000', '0059262737', 'Johns Inc', '3428781511');
+    VALUES ('2628759659', 'Yancy', 'Christoffe', '1/6/2022', '633-547-5965', '797 Amoth Circle', 'Ponta Grossa', null, '84000-000', null, 'Johns Inc', '3428781511');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('2242847104', 'Jecho', 'Baxster', '4/18/2022', '870-140-7612', '62585 Meadow Vale Junction', 'Pecatu', null, null, '4954080614', 'Jacobi, Robel and Jast', '7172833058');
+    VALUES ('2242847104', 'Jecho', 'Baxster', '4/18/2022', '870-140-7612', '62585 Meadow Vale Junction', 'Pecatu', null, null, '2628759659', 'Jacobi, Robel and Jast', '7172833058');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('1214835821', 'Arte', 'Astie', '5/13/2022', '676-305-7057', '06 Menomonie Avenue', 'Ketitang Wetan', null, null, '4766947169', 'Renner, Haley and Satterfield', '0705063186');
+    VALUES ('1214835821', 'Arte', 'Astie', '5/13/2022', '676-305-7057', '06 Menomonie Avenue', 'Ketitang Wetan', null, null, '2628759659', 'Renner, Haley and Satterfield', '0705063186');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('5597639005', 'Jobi', 'Akam', '4/17/2022', '912-248-9160', '84 Sage Center', 'Fengjiang', null, null, '8527001594', 'Crist, Altenwerth and Ritchie', '8279540148');
+    VALUES ('5597639005', 'Jobi', 'Akam', '4/17/2022', '912-248-9160', '84 Sage Center', 'Fengjiang', null, null, '2242847104', 'Crist, Altenwerth and Ritchie', '8279540148');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('5543020805', 'Lilah', 'Croxall', '4/21/2022', '604-724-6983', '37 Tennyson Pass', 'San Vicente', null, '6419', '3070583903', 'Stanton-Swaniawski', '2537190505');
+    VALUES ('5543020805', 'Lilah', 'Croxall', '4/21/2022', '604-724-6983', '37 Tennyson Pass', 'San Vicente', null, '6419', '1214835821', 'Stanton-Swaniawski', '2537190505');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('8727782549', 'Willyt', 'Ivankovic', '3/18/2022', '459-295-3042', '303 Village Green Parkway', 'Ambat', null, null, '5849531610', 'Kris, McGlynn and Conn', '7397371787');
+    VALUES ('8727782549', 'Willyt', 'Ivankovic', '3/18/2022', '459-295-3042', '303 Village Green Parkway', 'Ambat', null, null, '2628759659', 'Kris, McGlynn and Conn', '7397371787');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('9790817231', 'Janaya', 'Skures', '9/18/2022', '952-396-9049', '54 New Castle Alley', 'Uście Gorlickie', null, '38-315', '0338362037', 'Stanton and Sons', '4731002869');
+    VALUES ('9790817231', 'Janaya', 'Skures', '9/18/2022', '952-396-9049', '54 New Castle Alley', 'Uście Gorlickie', null, '38-315', '2628759659', 'Stanton and Sons', '4731002869');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('4204823300', 'Selina', 'Fear', '1/20/2022', '234-467-4493', '4 Oxford Lane', 'Repelón', null, '085048', '4724286652', 'Dach-Parisian', '3605029191');
+    VALUES ('4204823300', 'Selina', 'Fear', '1/20/2022', '234-467-4493', '4 Oxford Lane', 'Repelón', null, '085048', '2242847104', 'Dach-Parisian', '3605029191');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('7065018229', 'Cal', 'MacMakin', '6/29/2022', '457-677-5581', '43387 Florence Park', 'Tonoshō', null, '761-4154', '6496667179', 'Wilderman Group', '3455350348');
+    VALUES ('7065018229', 'Cal', 'MacMakin', '6/29/2022', '457-677-5581', '43387 Florence Park', 'Tonoshō', null, '761-4154', '2242847104', 'Wilderman Group', '8676754209');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('7377996552', 'Tessa', 'Soldi', '6/27/2022', '171-526-7489', '0 Daystar Circle', 'Banjar Sembunggede', null, null, '2932170406', 'Bashirian Group', '2159525189');
+    VALUES ('7377996552', 'Tessa', 'Soldi', '6/27/2022', '171-526-7489', '0 Daystar Circle', 'Banjar Sembunggede', null, null, '1214835821', 'Bashirian Group', '2159525189');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('7690963315', 'Solomon', 'MacHostie', '5/3/2022', '281-658-2191', '72394 Westport Plaza', 'Houston', 'Texas', '77293', '2534390988', 'Prosacco and Sons', '4505416739');
+    VALUES ('7690963315', 'Solomon', 'MacHostie', '5/3/2022', '281-658-2191', '72394 Westport Plaza', 'Houston', 'Texas', '77293', '1214835821', 'Prosacco and Sons', '4505416739');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('5627714727', 'Giustino', 'Boatwright', '7/6/2022', '978-424-3167', '8 American Ash Lane', 'Leonídio', null, null, '7578668439', 'Lueilwitz LLC', '8818807196');
+    VALUES ('5627714727', 'Giustino', 'Boatwright', '7/6/2022', '978-424-3167', '8 American Ash Lane', 'Leonídio', null, null, '2628759659', 'Lueilwitz LLC', '8818807196');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('1076595340', 'Clovis', 'Dimitresco', '1/18/2022', '932-885-3578', '9 Dapin Crossing', 'Huế', null, null, '9680820971', 'Skiles Inc', '4641896070');
+    VALUES ('1076595340', 'Clovis', 'Dimitresco', '1/18/2022', '932-885-3578', '9 Dapin Crossing', 'Huế', null, null, '2628759659', 'Skiles Inc', '4641896070');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('5064997892', 'Staford', 'Lamden', '3/15/2022', '267-367-7410', '8 Dovetail Trail', 'Jangas', null, null, '6246694403', 'Torp, Weber and Tromp', '1384261338');
+    VALUES ('5064997892', 'Staford', 'Lamden', '3/15/2022', '267-367-7410', '8 Dovetail Trail', 'Jangas', null, null, '2242847104', 'Torp, Weber and Tromp', '1384261338');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
-    VALUES ('6357639087', 'Johannah', 'Empleton', '2/15/2022', '358-258-3244', '766 Hudson Terrace', 'Beverwijk', 'Provincie Noord-Holland', '1944', '6970737470', 'Olson Inc', '9443448750');
+    VALUES ('6357639087', 'Johannah', 'Empleton', '2/15/2022', '358-258-3244', '766 Hudson Terrace', 'Beverwijk', 'Provincie Noord-Holland', '1944', '2242847104', 'Olson Inc', '9443448750');
 
 # table for Product Maker Market Stand
 CREATE TABLE ProductMakerMS (
@@ -682,63 +706,25 @@ INSERT INTO ProductMakerMS (PM_ID, standName, standID)
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
     VALUES ('6441851784', 'Dach-Parisian', '3605029191');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
-    VALUES ('1963218361', 'Wilderman Group', '3455350348');
+    VALUES ('1963218361', 'Wilderman Group', '8676754209');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
     VALUES ('5705049994', 'Bashirian Group', '2159525189');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
-    VALUES ('6758624609', 'Prosacco and Sons', '4505416739');
+    VALUES ('1534837132', 'Prosacco and Sons', '4505416739');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
-    VALUES ('4377459090', 'Lueilwitz LLC', '8818807196');
+    VALUES ('9073500877', 'Lueilwitz LLC', '8818807196');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
-    VALUES ('5710151254', 'Skiles Inc', '4641896070');
+    VALUES ('9485196504', 'Skiles Inc', '4641896070');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
-    VALUES ('0049629891', 'Torp, Weber and Tromp', '1384261338');
+    VALUES ('6404487640', 'Torp, Weber and Tromp', '1384261338');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
-    VALUES ('7401243873', 'Olson Inc', '9443448750');
-
-# table for ProductMaker
-CREATE TABLE ProductMaker (
-    PM_ID char(10) PRIMARY KEY,
-    firstName varchar(40),
-    lastName varchar(40),
-    phoneNumber char(10),
-    emailAddress varchar(50),
-    streetAddress varchar(50),
-    city varchar(50),
-    state varchar(30),
-    zip char(5)
-);
-
-# sample data for ProductMaker
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('4878910526', 'Morena', 'Jewson', '554-520-4055', 'mjewson0@indiatimes.com', '9 Crest Line Parkway', 'Świnice Warckie', null, '99-140');
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('1534837132', 'Shepperd', 'Luce', '115-562-3098', 'sluce1@mit.edu', '32664 Becker Pass', 'Llama', null, null);
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('9485196504', 'Milo', 'Champerlen', '335-601-6483', 'mchamperlen2@imageshack.us', '27 Drewry Center', 'Soubré', null, null);
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('6404487640', 'Zarla', 'Sandells', '304-334-1920', 'zsandells3@4shared.com', '57928 Dexter Street', 'Caen', 'Basse-Normandie', '14040 CEDEX 4');
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('9073500877', 'Brennen', 'Hauxley', '832-824-8341', 'bhauxley4@posterous.com', '9858 Meadow Valley Avenue', 'Rejasa Kaja', null, null);
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('5103651483', 'Emmalynne', 'Martello', '403-944-3869', 'emartello5@shutterfly.com', '71 Judy Junction', 'Santa Elena de Uairén', null, null);
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('9297937268', 'Roderic', 'Debney', '679-541-7861', 'rdebney6@cbsnews.com', '71 Springs Plaza', 'Shangbahe', null, null);
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('6441851784', 'Skippie', 'Allitt', '694-345-9484', 'sallitt7@youtube.com', '51 Dennis Hill', 'Yuecheng', null, null);
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('1963218361', 'Claudianus', 'Ashingden', '554-343-5755', 'cashingden8@geocities.com', '096 Bonner Hill', 'Sandayong Sur', null, '6344');
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('5705049994', 'Judon', 'Seegar', '194-823-5778', 'jseegar9@opensource.org', '01011 Northwestern Pass', 'Barubandung', null, null);
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('0049629891', 'Pryce', 'Cullington', '305-603-9244', 'pcullingtona@uiuc.edu', '0 Aberg Plaza', 'Sobral', 'Lisboa', '2530-285');
-INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
-    VALUES ('7401243873', 'Blondell', 'Mazdon', '975-169-4217', 'bmazdonb@time.com', '0 Nelson Crossing', 'Angoram', null, null);
+    VALUES ('1534837132', 'Olson Inc', '9443448750');
 
 # table for Tool
 CREATE TABLE Tool (
-    toolName varchar(40) PRIMARY KEY NOT NULL,
-    toolID char(5) PRIMARY KEY NOT NULL
+    toolName varchar(40) NOT NULL,
+    toolID char(5) PRIMARY KEY NOT NULL,
+    INDEX idx_toolName (toolName)
 );
 
 # sample data for Tool
@@ -831,10 +817,8 @@ CREATE TABLE PlantTool (
 
 # sample data for PlantTool table
 INSERT INTO PlantTool (plantName, plantSpecies, toolName, toolID)
-    VALUES ('Potato', 'Solanum tuberosum', 'Shovel', '19381');
+    VALUES ('Carrot', 'Daucus carota', 'Shovel', '19381');
 INSERT INTO PlantTool (plantName, plantSpecies, toolName, toolID)
-    VALUES ('Carrot', 'Daucus carota', 'Hoe', '18213');
+    VALUES ('Radish', 'Raphanus sativus', 'Hoe', '18213');
 INSERT INTO PlantTool (plantName, plantSpecies, toolName, toolID)
     VALUES ('Apple', 'Malus domestica', 'Tree tool kit', '29190');
-INSERT INTO PlantTool (plantName, plantSpecies, toolName, toolID)
-    VALUES ('Common plum', 'Prunus domestica', 'Tree tool kit', '29190');
