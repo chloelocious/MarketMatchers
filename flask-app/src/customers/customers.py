@@ -50,3 +50,24 @@ def get_moneySpent():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+# register as customer (add new customer)
+@customers.route('/registercust', methods=['POST'])
+def add_customer():
+    # current_app.logger.info(request.form)
+    cursor = db.get_db().cursor()
+    customerID = request.form['customerID']
+    firstName = request.form['firstName']
+    lastName = request.form['lastName']
+    phoneNum = request.form['phoneNum']
+    moneySpent = request.form['moneySpent']
+    emailAddress = request.form['emailAddress']
+    streetAddress = request.form['streetAddress']
+    zip = request.form['zip']
+    country = request.form['country']
+    query = f'INSERT INTO Customer(customerID, firstName, lastName, phoneNum, moneySpent, emailAddress, streetAddress, zip, country)'\
+            f'VALUES (\"{customerID}", \"{firstName}", \"{lastName}", \"{phoneNum}", \"{moneySpent}", \"{emailAddress}", \"{streetAddress}",' \
+            f', \"{zip}", \"{country}")'
+    cursor.execute(query)
+    db.get_db.commit()
+    return "Success!"
