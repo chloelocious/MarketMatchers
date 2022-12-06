@@ -1,17 +1,18 @@
 CREATE DATABASE MarketMatchers;
 
-SHOW DATABASES;
+-- SHOW DATABASES;
 
-USE MarketMatchers;
+-- USE MarketMatchers;
 
 -- CREATE USER 'webapp'@'%'
 --     IDENTIFIED BY 'abc123';
 
-GRANT ALL PRIVILEGES ON MarketMatchers.* TO 'webapp'@'%';
+grant all privileges on MarketMatchers.* to 'webapp'@'%';
+flush privileges;
 
 USE MarketMatchers;
 
-# table for Customer
+-- # table for Customer
 CREATE TABLE Customer (
     customerID char(5) PRIMARY KEY,
     firstName varchar(40),
@@ -24,7 +25,7 @@ CREATE TABLE Customer (
     country varchar(60)
 );
 
-# sample data for Customer
+-- sample data for Customer
 INSERT INTO Customer (customerID, firstName, lastName, phoneNum, moneySpent, emailAddress, streetAddress, zip, country)
     VALUES ('19384', 'Maurise', 'Deth', '425-274-8213', 23.21 ,'mdeth0@weather.com', '65 Anzinger Drive', '3332', 'Argentina');
 INSERT INTO Customer (customerID, firstName, lastName, phoneNum, moneySpent, emailAddress, streetAddress, zip, country)
@@ -56,7 +57,7 @@ INSERT INTO Customer (customerID, firstName, lastName, phoneNum, moneySpent, ema
 INSERT INTO Customer (customerID, firstName, lastName, phoneNum, moneySpent, emailAddress, streetAddress, zip, country)
     VALUES ('78645', 'Brooks', 'Pumfrett', '233-897-9137', 32.12, 'bpumfrette@ft.com', '059 Merry Road', null, 'China');
 
-# table for Invoice
+-- table for Invoice
 CREATE TABLE Invoice (
 	customerID CHAR(5) NOT NULL,
 	total DECIMAL(5,2),
@@ -68,7 +69,7 @@ CREATE TABLE Invoice (
                      REFERENCES Customer (customerID)
 );
 
-# sample data for Invoice
+-- sample data for Invoice
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
     VALUES ('19384', 63.20, '2022-02-21', '6977901632', '3557046000566772');
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
@@ -110,7 +111,7 @@ INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
 INSERT INTO Invoice (customerID, total, invoiceDate, invoiceID, billing)
     VALUES ('11631', 93.54, '2022-08-07', '2328253714', '3565171888523263');
 
-# table for InvoiceLine
+-- table for InvoiceLine
 CREATE TABLE InvoiceLine (
 	InvoiceLineID CHAR(10) PRIMARY KEY NOT NULL,
 	quantity INT,
@@ -122,7 +123,7 @@ CREATE TABLE InvoiceLine (
                          REFERENCES Invoice (invoiceID)
 );
 
-# sample data for InvoiceLine
+-- sample data for InvoiceLine
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('9864914403', 74, 20.83, '6977901632', 46);
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
@@ -164,13 +165,13 @@ INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productI
 INSERT INTO InvoiceLine (InvoiceLineID, quantity, unitPrice, invoiceID, productID)
     VALUES ('9333139923', 56, 2.62, '2328253714', 100);
 
-# table for Category
+-- table for Category
 CREATE TABLE Category (
 	categoryName VARCHAR(50) NOT NULL,
 	categoryID char(5) PRIMARY KEY NOT NULL
 );
 
-# sample data for Category
+-- sample data for Category
 INSERT INTO Category (categoryName, categoryID)
     VALUES ('Home goods', '30851');
 INSERT INTO Category (categoryName, categoryID)
@@ -183,7 +184,7 @@ INSERT INTO Category (categoryName, categoryID)
     VALUES ('Family', '44717');
 
 
-# table for Field
+-- table for Field
 CREATE TABLE Field (
 	crop_ID CHAR(5) PRIMARY KEY NOT NULL,
 	cropName VARCHAR(20),
@@ -194,7 +195,7 @@ CREATE TABLE Field (
     INDEX idx_cropName (cropName)
 );
 
-# sample data for Field
+-- sample data for Field
 INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
     VALUES ('87437', 'Corn', 4, 500, '2022-11-22', 10000);
 INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
@@ -208,7 +209,7 @@ INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, 
 INSERT INTO Field (crop_ID, cropName, plotNumber, numCropsPlanted, datePlanted, size)
     VALUES ('64021', 'Cabbage head', 7, 500, '2022-11-22', 6000);
 
-# table for Harvest
+-- table for Harvest
 CREATE TABLE Harvest
 (
 	invoiceID CHAR(10),
@@ -230,7 +231,7 @@ CREATE TABLE Harvest
         REFERENCES Field (cropName)
 );
 
-# sample data for Harvest
+-- sample data for Harvest
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('6977901632', '9864914403', 10, '34787', 'Medium-sized radish');
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
@@ -244,7 +245,7 @@ INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
 INSERT INTO Harvest (invoiceID, InvoiceLineID, quantity, crop_ID, cropName)
     VALUES ('3270771308', '2566389894', 5, '59086', 'Fuji Apple');
 
-# table for ProductMaker
+-- table for ProductMaker
 CREATE TABLE ProductMaker (
     PM_ID char(10) PRIMARY KEY,
     firstName varchar(40),
@@ -257,7 +258,7 @@ CREATE TABLE ProductMaker (
     zip char(20)
 );
 
-# sample data for ProductMaker
+-- sample data for ProductMaker
 INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
     VALUES ('4878910526', 'Morena', 'Jewson', '554-520-4055', 'mjewson0@indiatimes.com', '9 Crest Line Parkway', 'Świnice Warckie', null, '99-140');
 INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
@@ -283,7 +284,7 @@ INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress,
 INSERT INTO ProductMaker (PM_ID, firstName, lastName, phoneNumber, emailAddress, streetAddress, city, state, zip)
     VALUES ('7401243873', 'Blondell', 'Mazdon', '975-169-4217', 'bmazdonb@time.com', '0 Nelson Crossing', 'Angoram', null, null);
 
-# table for Plants
+-- table for Plants
 CREATE TABLE Plants (
   plantName varchar(40) PRIMARY KEY NOT NULL,
   plantSpecies varchar(40) NOT NULL,
@@ -304,7 +305,7 @@ CREATE TABLE Plants (
                     REFERENCES ProductMaker (PM_ID)
 );
 
-# sample data for Plants
+-- sample data for Plants
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
     VALUES ('Maize', 'Zea mays', 'Corn', '87437', '1.49', '5.73', '4878910526');
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
@@ -318,7 +319,7 @@ INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPri
 INSERT INTO Plants (plantName, plantSpecies, cropName, crop_ID, cost, sellingPrice, PM_ID)
     VALUES ('Apple', 'Malus domestica', 'Fuji Apple', '59086', '0.57', '3.99', '6404487640');
 
-# table for Product
+-- table for Product
 CREATE TABLE Product (
 	productID CHAR(10) PRIMARY KEY NOT NULL,
 	quantity INT,
@@ -334,7 +335,7 @@ CREATE TABLE Product (
                      REFERENCES ProductMaker (PM_ID)
 );
 
-# sample data for Product
+-- sample data for Product
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
     VALUES ('8247971116', 20, 'Wool socks', 'Socks', 8.00, 3.19, '99684', '1534837132');
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
@@ -346,7 +347,7 @@ INSERT INTO Product (productID, quantity, productDescription, productName, selli
 INSERT INTO Product (productID, quantity, productDescription, productName, sellingPrice, costToMake, categoryID, PM_ID)
     VALUES ('0343846290', 15, 'Wool scarf', 'Scarf', 30.00, 24.12, '99684', '5103651483');
 
-# table for Enclosure
+-- table for Enclosure
 CREATE TABLE Enclosure (
     enclosureID char(5) PRIMARY KEY NOT NULL,
     type varchar(40),
@@ -354,7 +355,7 @@ CREATE TABLE Enclosure (
     dateBuilt date
 );
 
-# sample data for Enclosure
+-- sample data for Enclosure
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
     VALUES ('26161', 'Pig pen', '5000 square feet', '2022-06-21');
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
@@ -374,7 +375,7 @@ INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
 INSERT INTO Enclosure (enclosureID, type, size, dateBuilt)
     VALUES ('29482', 'Hay and feed storage', '5000 square feet', '2014-12-30');
 
-# table for AnimalType
+-- table for AnimalType
 CREATE TABLE AnimalType (
   animalName varchar(40) NOT NULL,
   a_TypeID char(10) PRIMARY KEY NOT NULL,
@@ -385,7 +386,7 @@ CREATE TABLE AnimalType (
                         REFERENCES Enclosure (enclosureID)
 );
 
-# sample data for AnimalType
+-- sample data for AnimalType
 INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
     VALUES ('Hampshire pig', '8455515188', '29482');
 INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
@@ -407,7 +408,7 @@ INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
 INSERT INTO AnimalType (animalName, a_TypeID, enclosureID)
     VALUES ('Hampshire sheep', '3376192698', '29482');
 
-# table for AnimalProduct
+-- table for AnimalProduct
 CREATE TABLE AnimalProduct (
 	InvoiceLineID CHAR(10) NOT NULL,
 	productName VARCHAR(20),
@@ -425,7 +426,7 @@ CREATE TABLE AnimalProduct (
                            REFERENCES AnimalType (a_TypeID)
 );
 
-# sample data for AnimalProduct
+-- sample data for AnimalProduct
 INSERT INTO AnimalProduct (InvoiceLineID, productName, animalName, a_TypeID, quantity)
     VALUES ('7425878695', 'Whole milk', 'Hereford cattle', '9738514525', 30);
 INSERT INTO AnimalProduct (InvoiceLineID, productName, animalName, a_TypeID, quantity)
@@ -437,7 +438,7 @@ INSERT INTO AnimalProduct (InvoiceLineID, productName, animalName, a_TypeID, qua
 INSERT INTO AnimalProduct (InvoiceLineID, productName, animalName, a_TypeID, quantity)
     VALUES ('9333139923', 'Pork', 'Hampshire pig', '8455515188', 9);
 
-# table for Livestock
+-- table for Livestock
 CREATE TABLE Livestock (
   animalSpecies varchar(40) NOT NULL,
   animalName varchar(40) NOT NULL,
@@ -458,7 +459,7 @@ CREATE TABLE Livestock (
                        REFERENCES ProductMaker (PM_ID)
 );
 
-# sample data for Livestock
+-- sample data for Livestock
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
     VALUES ('Sus scrofa domesticus', 'Hampshire pig', '8455515188', 8, 285.62, 242.11, '1534837132');
 INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellingPrice, PM_ID)
@@ -481,12 +482,12 @@ INSERT INTO Livestock (animalSpecies, animalName, a_TypeID, amount, cost, sellin
     VALUES ('Ovis aries', 'Hampshire sheep', '3376192698', 11, 340.75, 453.25, '9073500877');
 
 
-# table for Website
+-- table for Website
 CREATE TABLE Website (
     URL varchar(40) PRIMARY KEY
 );
 
-# sample data for Website
+-- sample data for Website
 INSERT INTO Website (URL) VALUES ('creativecommons.org');
 INSERT INTO Website (URL) VALUES ('etsy.com');
 INSERT INTO Website (URL) VALUES ('google.com');
@@ -494,12 +495,12 @@ INSERT INTO Website (URL) VALUES ('wikispaces.com');
 INSERT INTO Website (URL) VALUES ('blogspot.com');
 INSERT INTO Website (URL) VALUES ('yelp.com');
 
-# table for Flyer
+-- table for Flyer
 CREATE TABLE Flyer (
     locationPosted varchar(40) PRIMARY KEY
 );
 
-# sample data for Flyer
+-- sample data for Flyer
 INSERT INTO Flyer (locationPosted) VALUES ('1903 Mitchell Lane');
 INSERT INTO Flyer (locationPosted) VALUES ('34168 Monica Crossing');
 INSERT INTO Flyer (locationPosted) VALUES ('055 Bluejay Pass');
@@ -516,7 +517,7 @@ INSERT INTO Flyer (locationPosted) VALUES ('3 Troy Drive');
 INSERT INTO Flyer (locationPosted) VALUES ('6 Chinook Avenue');
 INSERT INTO Flyer (locationPosted) VALUES ('6 Chive Circle');
 
-# table for MarketStand
+-- table for MarketStand
 CREATE TABLE MarketStand (
     standName varchar(40) NOT NULL,
     standID char(10) PRIMARY KEY,
@@ -556,7 +557,7 @@ INSERT INTO MarketStand (standName, standID, standDescription, location)
 INSERT INTO MarketStand (standName, standID, standDescription, location)
     VALUES ('Olson Inc', '9443448750', 'Produce goods and products', '2079 Basil Way');
 
-# table for HostingSource
+-- table for HostingSource
 CREATE TABLE HostingSource (
     eventName varchar(60) PRIMARY KEY,
     URL varchar(40),
@@ -583,7 +584,7 @@ CREATE TABLE HostingSource (
         REFERENCES MarketStand (standID)
 );
 
-# sample data for hosting source
+-- sample data for hosting source
 INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
     VALUES ('Holiday Market', 'Produce, animal goods, home goods', 'Skarts', '315-617-0301', 'Sasha', 'Baudy', 'sbaudy0@de.vu', 'creativecommons.org', '1903 Mitchell Lane', 'Johns Inc', '3428781511');
 INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
@@ -615,7 +616,7 @@ INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, 
 INSERT INTO HostingSource (eventName, productType, sponsor, contactInformation, firstName, lastName, emailAddress, URL, locationPosted, standName, standID)
     VALUES ('Small Business Swap', 'Produce, animal goods, home goods', 'Topdrive', '154-879-5250', 'Aurelie', 'Tabourier', 'atabouriere@instagram.com', 'blogspot.com', '6 Chinook Avenue', 'Olson Inc', '9443448750');
 
-# table for Employee
+-- table for Employee
 CREATE TABLE Employee(
     IDNum char(10) PRIMARY KEY,
     firstName varchar(40),
@@ -640,7 +641,7 @@ CREATE TABLE Employee(
         REFERENCES MarketStand (standID)
 );
 
-# sample data for Employee
+-- sample data for Employee
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
     VALUES ('2628759659', 'Yancy', 'Christoffe', '1/6/2022', '633-547-5965', '797 Amoth Circle', 'Ponta Grossa', null, '84000-000', null, 'Johns Inc', '3428781511');
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
@@ -672,7 +673,7 @@ INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddr
 INSERT INTO Employee (IDNum, firstName, lastName, bDate, phoneNumber, streetAddress, city, state, zip, mgrID, standName, standID)
     VALUES ('6357639087', 'Johannah', 'Empleton', '2/15/2022', '358-258-3244', '766 Hudson Terrace', 'Beverwijk', 'Provincie Noord-Holland', '1944', '2242847104', 'Olson Inc', '9443448750');
 
-# table for Product Maker Market Stand
+-- table for Product Maker Market Stand
 CREATE TABLE ProductMakerMS (
     PM_ID char(10),
     standName varchar(40),
@@ -688,7 +689,7 @@ CREATE TABLE ProductMakerMS (
         REFERENCES MarketStand (standID)
 );
 
-# sample data for Product Maker Market Stand
+-- sample data for Product Maker Market Stand
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
     VALUES ('4878910526', 'Johns Inc', '3428781511');
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
@@ -720,14 +721,14 @@ INSERT INTO ProductMakerMS (PM_ID, standName, standID)
 INSERT INTO ProductMakerMS (PM_ID, standName, standID)
     VALUES ('1534837132', 'Olson Inc', '9443448750');
 
-# table for Tool
+-- table for Tool
 CREATE TABLE Tool (
     toolName varchar(40) NOT NULL,
     toolID char(5) PRIMARY KEY NOT NULL,
     INDEX idx_toolName (toolName)
 );
 
-# sample data for Tool
+-- sample data for Tool
 INSERT INTO Tool (toolName, toolID)
     VALUES ('Hand shears', '10293');
 INSERT INTO Tool (toolName, toolID)
@@ -743,7 +744,7 @@ INSERT INTO Tool (toolName, toolID)
 INSERT INTO Tool (toolName, toolID)
     VALUES ('Tree tool kit', '29190');
 
-# table for ProductTool
+-- table for ProductTool
 CREATE TABLE ProductTool (
     toolName varchar(40) NOT NULL,
     toolID char(5) NOT NULL,
@@ -759,7 +760,7 @@ CREATE TABLE ProductTool (
                          REFERENCES Product (productID)
 );
 
-# sample data for ProductTool
+-- sample data for ProductTool
 INSERT INTO ProductTool (toolName, toolID, productID)
     VALUES ('Hand shears', '10293', '8247971116');
 INSERT INTO ProductTool (toolName, toolID, productID)
@@ -769,7 +770,7 @@ INSERT INTO ProductTool (toolName, toolID, productID)
 INSERT INTO ProductTool (toolName, toolID, productID)
     VALUES ('Bucket', '53813', '2941651343');
 
-# table for LivestockTool
+-- table for LivestockTool
 CREATE TABLE LivestockTool (
   animalSpecies varchar(40) NOT NULL,
   toolName varchar(40) NOT NULL,
@@ -785,7 +786,7 @@ CREATE TABLE LivestockTool (
                            REFERENCES Tool (toolID)
 );
 
-# sample data for LivestockTool
+-- sample data for LivestockTool
 INSERT INTO LivestockTool (animalSpecies, toolName, toolID)
     VALUES ('Ovis aries', 'Hand shears', '10293');
 INSERT INTO LivestockTool (animalSpecies, toolName, toolID)
@@ -795,7 +796,7 @@ INSERT INTO LivestockTool (animalSpecies, toolName, toolID)
 INSERT INTO LivestockTool (animalSpecies, toolName, toolID)
     VALUES ('Capra aegagrus hircus', 'Ear tag', '42832');
 
-# table for PlantTool
+-- table for PlantTool
 CREATE TABLE PlantTool (
   plantName varchar(40) NOT NULL,
   plantSpecies varchar(40) NOT NULL,
@@ -815,7 +816,7 @@ CREATE TABLE PlantTool (
                        REFERENCES Tool (toolID)
 );
 
-# sample data for PlantTool table
+-- sample data for PlantTool table
 INSERT INTO PlantTool (plantName, plantSpecies, toolName, toolID)
     VALUES ('Carrot', 'Daucus carota', 'Shovel', '19381');
 INSERT INTO PlantTool (plantName, plantSpecies, toolName, toolID)
