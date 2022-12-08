@@ -33,7 +33,7 @@ def get_products():
 
 # Get all the names and ID values of all the Products in the database
 @products.route('/marketstands', methods=['GET'])
-def get_products():
+def get_products2():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
