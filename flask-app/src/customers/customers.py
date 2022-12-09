@@ -2,30 +2,13 @@ from flask import Blueprint, request, jsonify, make_response
 import json
 from src import db
 
-
 customers = Blueprint('customers', __name__)
 
 # Get all customers from the DB
-@customers.route('/customers', methods=['GET'])
+@customers.route('/getcustomers', methods=['GET'])
 def get_customers():
     cursor = db.get_db().cursor()
-    cursor.execute('select firstName, lastName,\
-        customerID from Customer')
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
-
-# Get customer detail for customer with particular userID
-@customers.route('/customers/<userID>', methods=['GET'])
-def get_customer(userID):
-    cursor = db.get_db().cursor()
-    cursor.execute('select * from Customer where customerID = {0}'.format(userID))
+    cursor.execute('select customerID, firstName, lastName from Customer')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -37,10 +20,10 @@ def get_customer(userID):
     return the_response
 
 # Get details on the amount of money spent for each customer
-@customers.route('/customers/moneySpent', methods=['GET'])
+@customers.route('/viewcustomertotal', methods=['GET'])
 def get_moneySpent():
     cursor = db.get_db().cursor()
-    cursor.execute('select moneySpent, firstName, lastName from Customer')
+    cursor.execute('select firstName, lastName, moneySpent from Customer')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -54,7 +37,7 @@ def get_moneySpent():
 # register as customer (add new customer)
 @customers.route('/registercust', methods=['POST'])
 def add_customer():
-    # current_app.logger.info(request.form)
+    current_app.logger.info(request.form)
     cursor = db.get_db().cursor()
     customerID = request.form['customerID']
     firstName = request.form['firstName']

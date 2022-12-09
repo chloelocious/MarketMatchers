@@ -6,7 +6,7 @@ from src import db
 products = Blueprint('products', __name__)
 
 # Get all the names and ID values of all the Products in the database
-@products.route('/products', methods=['GET'])
+@products.route('/getproducts', methods=['GET'])
 def get_products():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
