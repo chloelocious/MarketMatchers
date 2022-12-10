@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -48,9 +48,9 @@ def add_customer():
     streetAddress = request.form['streetAddress']
     zip = request.form['zip']
     country = request.form['country']
-    query = f'INSERT INTO Customer(customerID, firstName, lastName, phoneNum, moneySpent, emailAddress, streetAddress, zip, country)'\
-            f'VALUES (\"{customerID}", \"{firstName}", \"{lastName}", \"{phoneNum}", \"{moneySpent}", \"{emailAddress}", \"{streetAddress}",' \
-            f', \"{zip}", \"{country}")'
+    query = f'INSERT INTO Customer(customerID, firstName, lastName, phoneNum, moneySpent, emailAddress, streetAddress, zip, country) \
+            VALUES ("{customerID}", "{firstName}", "{lastName}", "{phoneNum}", "{moneySpent}", "{emailAddress}", "{streetAddress}", "{zip}", "{country}")'
+    current_app.logger.info(query)
     cursor.execute(query)
-    db.get_db.commit()
+    db.get_db().commit()
     return "Success!"
